@@ -1,0 +1,7 @@
+#!/bin/bash
+# Script to invoke node from within emacs such that REPL is not
+# cluttered with distracting 'undefined' values. We do it from
+# a separate bash file to be maximally portable.
+# 
+# See: http://nodejs.org/api/repl.html#repl_repl
+node -e "require('repl').start({ignoreUndefined: true})"
