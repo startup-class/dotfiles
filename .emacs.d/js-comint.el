@@ -134,6 +134,21 @@ is run).
 (defun remove-newlines (mystr) (replace-regexp-in-string "\n" " " mystr))
 
 ;;;###autoload
+(defun starts-with-js-comment (line) 
+  (equal 0 (string-match "^[[:space:]]*//" line)))
+
+;;;###autoload
+(defun remove-js-comments (mystr) 
+  "Remove lines starting with // and return as single line of JS code.
+   See: http://www.emacswiki.org/emacs/ElispCookbook
+  "
+  (mapconcat 'identity
+             (remove-if 'starts-with-js-comment 
+                        (split-string mystr "\n"))
+             " "
+             ))
+
+;;;###autoload
 (defun js-send-region (start end)
   "Send the current region to the inferior Javascript process."
   (interactive "r")
@@ -146,7 +161,7 @@ is run).
   (run-js inferior-js-program-command t)
 
   (setq curwindow (selected-window))
-  (save-excursion (let ((jscode (remove-newlines (buffer-substring start end))))
+  (save-excursion (let ((jscode (remove-js-comments (buffer-substring start end))))
 		    (set-buffer "*js*")
 		    (insert jscode)
 		    (comint-send-input)
