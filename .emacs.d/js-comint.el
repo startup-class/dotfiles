@@ -106,8 +106,8 @@ is run).
   ;; BSS: node and node_emacs echo the command twice, rhino not at all.
   ;; Thus we need different settings here for different modes.  Default is
   ;; to have this variable NOT turned on.
-  (if (or (equal inferior-js-program-command "node_emacs")
-	  (equal inferior-js-program-command "node"))
+  (if (or (equal js-prog "node_emacs")
+	  (equal js-prog "node"))
       (setq comint-process-echoes t)
     )
 
@@ -154,8 +154,8 @@ is run).
   (interactive "r")
 
   ;; BSS: echo for node and node_emacs
-  (if (or (equal inferior-js-program-command "node_emacs")
-	  (equal inferior-js-program-command "node"))
+  (if (or (equal js-prog "node_emacs")
+	  (equal js-prog "node"))
       (setq comint-process-echoes t)
     )
   (run-js inferior-js-program-command t)
