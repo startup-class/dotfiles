@@ -134,11 +134,6 @@ if [ "$PS1" ]; then
     # 5) current working directory (to see where a command was executed)
     # 6) the last command you executed
     #
-    # The only minor bug: if you include a literal newline or tab (e.g. with
-    # awk -F"\t"), then that will be included verbatime. It is possible to
-    # define a bash function which escapes the string before writing it; if you
-    # have a fix for that which doesn't slow the command down, please submit
-    # a patch or pull request.
     PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'{ echo -ne $$\\t$USER\\t$HOSTNAME\\tscreen $WINDOW\\t`date +%D%t%T%t%Y%t%s`\\t$PWD; history 1; } >> ~/.bash_eternal_history'
 
     # Turn on checkwinsize
