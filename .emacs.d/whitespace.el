@@ -27,7 +27,7 @@
 ;;; Commentary:
 
 ;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
+;
 ;; Introduction
 ;; ------------
 ;;
@@ -2451,6 +2451,7 @@ It should be added buffer-locally to `write-file-functions'."
   (global-whitespace-mode -1)
   ;; be sure all local whitespace mode is turned off
   (save-current-buffer
+  
     (dolist (buf (buffer-list))
       (set-buffer buf)
       (whitespace-mode -1)))
@@ -2465,3 +2466,5 @@ It should be added buffer-locally to `write-file-functions'."
 
 ;; arch-tag: 1b1e2500-dbd4-4a26-8f7a-5a5edfd3c97e
 ;;; whitespace.el ends here
+
+start
