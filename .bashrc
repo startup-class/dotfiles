@@ -1,3 +1,4 @@
+
 # .bashrc file
 # By Balaji S. Srinivasan (balajis@stanford.edu)
 #
@@ -162,9 +163,8 @@ shopt -s histappend
 
 # Make prompt informative
 # See:  http://www.ukuug.org/events/linux2003/papers/bash_tips/
-# PS1="\[\033[0;34m\][\u@\h:\w]$\[\033[0m\] "
-PS1='\[$(tput sgr0)\][\[$(tput setaf 2)\]\u\[$(tput setaf 3)\]@\h:\w\[$(tput sgr0)]\[$(tput sgr0)\]$(tput setaf 5)\]\[$(tput sgr0)$(tput setaf 2)\] $\[$(tput sgr0)\] ' 
-
+# PS1="\[\033[0;34m\][\u@\h:\w]$\[\033[0m\] " 
+PS1='\[$(tput sgr0)\][\[$(tput setaf 3)\]\u@\h:\[$(tput setaf 5)\]\w\[$(tput sgr0)\]]\[$(tput setaf 2)\] $\[$(tput sgr0)\] '
 ## -----------------------
 ## -- 2) Set up aliases --
 ## -----------------------
