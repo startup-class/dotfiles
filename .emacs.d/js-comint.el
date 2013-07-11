@@ -69,6 +69,7 @@
 ;;; Code:
 
 (require 'comint)
+(require 'cl-lib)
 
 (provide 'js-comint)
 
@@ -124,29 +125,16 @@ is run).
   (if (not dont-switch-p)
       (pop-to-buffer "*js*")))
 
-
-(defun quote-js (mystr)
-  (replace-regexp-in-string "\\" "\\\\" mystr)
-  (replace-regexp-in-string "\"" "\\\"" )
- )
-
-;;;###autoload
-(defun remove-newlines (mystr) (replace-regexp-in-string "\n" " " mystr))
-
-;;;###autoload
-(defun starts-with-js-comment (line) 
-  (equal 0 (string-match "^[[:space:]]*//" line)))
-
-;;;###autoload
-(defun remove-js-comments (mystr) 
-  "Remove lines starting with // and return as single line of JS code.
-   See: http://www.emacswiki.org/emacs/ElispCookbook
-  "
-  (mapconcat 'identity
-             (remove-if 'starts-with-js-comment 
-                        (split-string mystr "\n"))
-             " "
-             ))
+(defun remove-js-comments (string)
+  "Return a single line by joining together lines in STRING while
+converting inline comment (if any) to block comment."
+  (let* ((rules '(("  *" " ")))
+         (lines (mapcar (lambda (x)
+                          (replace-regexp-in-string "//\\(.*\\)$" "/*\\1*/" x))
+                        (split-string string "\n"))))
+    (cl-reduce (lambda (code rule)
+                 (replace-regexp-in-string (car rule) (cadr rule) code nil t))
+	       rules :initial-value (mapconcat 'identity lines " "))))
 
 ;;;###autoload
 (defun js-send-region (start end)
