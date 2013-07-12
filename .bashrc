@@ -19,7 +19,7 @@
 #       aliases and things like writing to .bash_eternal_history (see below)
 #
 # Do 'man bashrc' for the long version or see here:
-# http://en.wikipedia.org/wiki/Bash#Startup_scripts
+# http://en.wikipedia.org/wiki/Bash_(Unix_shell)#Startup_scripts
 #
 # When Bash starts, it executes the commands in a variety of different scripts.
 #
