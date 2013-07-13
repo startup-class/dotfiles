@@ -135,7 +135,7 @@ if [ "$PS1" ]; then
     # 6) the last command you executed
     #
     # The only minor bug: if you include a literal newline or tab (e.g. with
-    # awk -F"\t"), then that will be included verbatime. It is possible to
+    # awk -F"\t"), then that will be included verbatim. It is possible to
     # define a bash function which escapes the string before writing it; if you
     # have a fix for that which doesn't slow the command down, please submit
     # a patch or pull request.
