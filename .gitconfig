@@ -1,3 +1,10 @@
+[user]
+        name = sammychl
+        email = sammychl@gmail.com
+[core]
+        autocrlf = input
+        safecrlf = true
+        excludesfile = /home/ubuntu/.gitignore_global
 [alias]
   co = checkout
   ci = commit
