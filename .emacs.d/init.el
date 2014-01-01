@@ -146,6 +146,11 @@
 
 
 
+;; git difftool emerge setting to ignore all space
+(setq emerge-diff-options "--ignore-all-space")
+
+
+
 (custom-set-variables
 
 
