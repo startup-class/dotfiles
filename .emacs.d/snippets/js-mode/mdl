@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: mdl
+# key: mdl
+# --
+module.exports = function(sequelize, DataTypes) {
+  var $1 = sequelize.define('$1', {
+    title: DataTypes.STRING
+  }, {
+    associate: function(models) {
+      $1.belongsTo(models.$2)
+      $1.hasMany(models.$3)
+    }
+  })
+
+  return $1
+}
